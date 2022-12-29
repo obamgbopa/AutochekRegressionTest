@@ -18,7 +18,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [14.x]
 
     steps:
 
@@ -53,7 +53,7 @@ jobs:
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/autochek:latest
 
       - name: run cypress tests with firefox
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v5
         timeout-minutes: 10
         with:
           browser: chrome
