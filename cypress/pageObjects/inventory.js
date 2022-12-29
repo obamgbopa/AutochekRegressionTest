@@ -48,6 +48,21 @@ class InventoryPage {
   }
 
 
+  openFilter() {
+    cy.get('.other-filters > :nth-child(2) > .text').click();
+  }
+
+  selectFilter() {
+    cy.get('.search > .input-container > .input-icon-container > .input').type('toyota');
+    cy.get(':nth-child(3) > .false').click();
+    cy.get('.selectedFilter').click();
+  }
+
+  filterType() {
+    cy.get(':nth-child(1) > .car-item > a > .car-item-header > .info > .flex > .name').should('include.text', 'Toyota');
+  }
+
+
 }
 
 export default InventoryPage;

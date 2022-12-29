@@ -7,6 +7,7 @@ class AuthPage {
   submitLoginBtn = "button[type=submit]";
   loginInButton = ".button";
   loggedInPage = ".profile-menu > :nth-child(2)";
+  errorMsg = "#swal2-content";
   
   //loggedInPage = "a[text='Sign Out']"; <a class="">Sign Out</a> 
   // #__next > div > div.header.hide- > div.menu-container > div > div.profile-menu > a:nth-child(2) 
@@ -14,6 +15,7 @@ class AuthPage {
   //loggedInPage = "a[href='en/ng/profile']";
   signInPage = "https://marketplace.staging.myautochek.com/en/ng";
   signProdPage = "https://autochek.africa/en/ng";
+  authUrl = "https://autochek.africa/en/ng/auth/login";
   prodemail = "oluwaseun.b+dsa1@autochek.africa";
   prodpassword = "P@ssw0rd";
   email = "oluwaseun.b@autochek.africa";
@@ -51,7 +53,22 @@ class AuthPage {
       .should('be.visible')
       .clear()
       .type(prodpassword);
+      
 }
+
+
+fillInvalidEmailAndPassword(email, password) {
+  cy.get(this.emailBox)
+    .clear()
+    .should('be.empty')
+    .type(email);
+  cy.get(this.passwordBox)
+    .should('be.visible')
+    .clear()
+    .type(password);
+    
+}
+
   clickSignInButton() {
     cy.get(this.submitLoginBtn)
       .should('exist')
@@ -69,6 +86,13 @@ class AuthPage {
     cy.url().should("eq", this.signProdPage);
     //cy.get(this.loggedInPage)
     //  .should("exist");
+  }
+
+  verifyLoginErrorPage() {
+    cy.url().should("eq", this.authUrl);
+    cy.get(this.errorMsg)
+    .should("exist");
+    cy.get(this.errorMsg).should("include.text", "User not found. Please sign up")
   }
 
 }

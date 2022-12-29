@@ -21,3 +21,16 @@ And("I view the details of the first inventory", function() {
 Then("User should be redirected to the inventory page and listing of cars", function() {
   inventoryPage.searchCarPage();
 });
+
+
+And("I click on the Type and Model Filter", function() {
+  inventoryPage.openFilter();
+});
+
+And("I select a type and submit", function() {
+  inventoryPage.selectFilter();
+});
+
+Then("User should be redirected to the inventory page and listing of cars of that type or model", function() {
+  inventoryPage.filterType();
+});

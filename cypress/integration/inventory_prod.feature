@@ -10,5 +10,5 @@ Feature: Visit the Inventory Page and Listing
     When I click on the buy car on the navitem
     And I click on the Type and Model Filter
     And I select a type and submit
-    Then User should be redirected to the inventory page and listing of cars of that type/model
+    Then User should be redirected to the inventory page and listing of cars of that type or model
 

@@ -14,6 +14,7 @@
     "plugins": [
       "cypress",
       "cucumber",
+      "@babel/plugin-proposal-class-properties",
       "unused-imports"
     ],
     "extends": [

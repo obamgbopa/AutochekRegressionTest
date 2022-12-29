@@ -11,7 +11,6 @@ Feature: Apply for Loan/Buy A car
   Scenario: Apply for Financing
     Given I visit autocheck Nigeria page
     When I click on the apply for financin
-    And I click on apply for loan 
-    And I selected the product type
+    And I click on apply for pre loan
     And I fill the loan form and submit
     Then User should be shown a success message

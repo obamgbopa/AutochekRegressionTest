@@ -1,7 +1,7 @@
 /* eslint-disable cucumber/async-then */
 /// <reference types="cypress" />
 
-
+import faker from "faker";
 import { And, Given, Then, When } from "cypress-cucumber-preprocessor/steps";
 import AuthPage from "../../pageObjects/auth";
 
@@ -22,4 +22,15 @@ And("I insert valid credential to login", function() {
 });
 Then("User should be redirected to the marketplace homepage", function() {
   authPage.verifyProdLoggedPage();
+});
+
+
+And("I insert invalid credential to login", function() {
+  const email = faker.internet.email(),
+    password = faker.internet.password();
+  authPage.fillEmailAndPassword(email, password);
+  authPage.clickSignInButton();
+});
+Then("User should be shown an error", function() {
+  authPage.verifyLoginErrorPage();
 });
