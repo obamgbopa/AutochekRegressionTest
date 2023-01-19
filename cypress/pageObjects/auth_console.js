@@ -85,7 +85,7 @@ fillInvalidEmailAndPassword(email, password) {
     .should('exist')
       .click();
 
-      cy.get(':nth-child(7) > .sidebar-item > .app-cover > span > .sidebar-link')
+      cy.get(':nth-child(8) > .sidebar-item > .app-cover > span > .sidebar-link')
       .should('exist')
       .click();
   }
